@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Parties contre des bots</title>
+<meta name="theme-color" content="#0b0f1d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div id="lobby"><div class="wrap">
+ <div class="hero"><h1>Partie contre des bots</h1><p>Seul sur ton appareil. Choisis combien d’adversaires tu veux affronter.</p><p><a class="btn" href="index.html">← Menu</a></p></div>
+ <div class="card" id="join">
+  <h2>Réglages</h2>
+  <div class="row"><input id="name" type="text" maxlength="14" placeholder="Votre prénom" aria-label="Prénom" value="Toi"></div>
+  <label for="nbots">Nombre de bots</label>
+  <div class="range"><input id="nbots" type="range" min="3" max="15" value="7"><span id="nlabel">7 bots</span></div>
+  <div id="jstat" class="hint"></div>
+  <div id="room">
+   <ul id="plist"></ul>
+   <div class="row"><button class="main" id="bstart">Lancer la partie</button></div>
+   <p class="hint" id="hostnote"></p>
+  </div>
+ </div>
+ <div class="card"><h2>Les rôles</h2><p class="hint" id="rolehint">Le chef de la partie peut décocher des rôles.</p><div class="roles" id="roles"></div></div>
+</div></div>
+<canvas id="c"></canvas>
+<div id="hud" hidden>
+ <div id="top"><div id="phase"></div><div id="timer"></div></div>
+ <div id="left"><div id="log"></div></div>
+ <div id="right"><a class="btn" href="index.html">Menu</a><button id="brole">Mon rôle</button><button id="bmic">Micro : …</button><div id="roster"></div></div>
+ <canvas id="mini" width="336" height="232"></canvas>
+ <div id="panel" hidden><h3 id="ptitle"></h3><p id="psub"></p><div id="opts"></div><div class="row"><button class="main" id="pok">Valider</button><button id="pskip">Passer</button></div></div>
+</div>
+<div class="modal" id="rolecard" hidden><div class="card"><div class="ico" id="rci"></div><h2 id="rcn"></h2><p id="rcd"></p><p class="hint" id="rcx"></p><button class="main" id="rcclose">Compris</button></div></div>
+<div class="modal" id="endcard" hidden><div class="card"><h2 id="endt"></h2><p id="endd"></p><p class="hint" id="endr"></p><div class="row" style="justify-content:center"><button class="main" onclick="location.reload()">Rejouer</button><a class="btn" href="index.html">Menu</a></div></div></div>
+<script>window.MODE="bots"</script>
+<script src="game.js"></script></body></html>

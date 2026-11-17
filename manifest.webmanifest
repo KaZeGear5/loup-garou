@@ -1,0 +1,17 @@
+{
+  "name": "Les Loups de Thiercelieux",
+  "short_name": "Loup-Garou",
+  "description": "Le loup-garou de Thiercelieux en 2D avec voix de proximité, en ligne ou contre des bots.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0f1d",
+  "theme_color": "#0b0f1d",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

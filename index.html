@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Les Loups de Thiercelieux</title>
+<meta name="theme-color" content="#0b0f1d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head><body style="overflow:auto">
+<div id="lobby" style="position:static;min-height:100%"><div class="hero" style="max-width:980px;margin:0 auto 18px;padding-top:24px"><h1>Les Loups de Thiercelieux</h1><p>Un village, une forêt, un feu de camp. Déplacez-vous librement, parlez à ceux qui sont près de vous, et votez au feu de camp.</p></div>
+<div class="menu">
+ <div class="card"><h2>Jouer en ligne</h2><p>Entre amis, sans bots. Un joueur crée la partie et partage un code ou un lien. Connexion directe entre les appareils (P2P) et voix de proximité.</p><a class="btn main" href="online.html">Créer ou rejoindre</a></div>
+ <div class="card"><h2>Jouer contre des bots</h2><p>Hors ligne, tout seul. Vous choisissez le nombre d’adversaires, de 3 à 15.</p><a class="btn main" href="bots.html">Lancer une partie</a></div>
+ <div class="card"><h2>Installer l’appli</h2><p>Ajoutez le jeu à votre téléphone ou à votre ordinateur, il s’ouvre ensuite comme une vraie appli.</p><button class="main" id="binstall" hidden>Installer l’appli</button><p class="hint" id="ihint"></p></div>
+</div>
+<div style="max-width:980px;margin:18px auto 0"><div class="card"><h2>Les rôles</h2><p class="hint" id="rolehint">Le chef de la partie peut décocher des rôles.</p><div class="roles" id="roles"></div></div></div></div>
+<script src="roles.js"></script>
+<script>
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+let dip=null;const bi=document.getElementById('binstall'),ih=document.getElementById('ihint');
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;bi.hidden=false;ih.textContent='';});
+bi.onclick=async()=>{if(!dip)return;dip.prompt();await dip.userChoice;dip=null;bi.hidden=true;};
+addEventListener('appinstalled',()=>{bi.hidden=true;ih.textContent='Appli installée.';});
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent),std=matchMedia('(display-mode: standalone)').matches;
+ih.textContent=std?'Vous utilisez déjà l’appli installée.':ios?'Sur iPhone et iPad : touchez Partager, puis « Sur l’écran d’accueil ».':'Sur Chrome : le bouton apparaît ici, ou utilisez l’icône d’installation de la barre d’adresse. Il faut ouvrir le site en https.';
+</script></body></html>
